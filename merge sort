@@ -2,6 +2,7 @@
 using namespace std;
 #include <chrono>
 
+// Función para combinar dos subarrays ordenados en un solo array ordenado
 void merge(vector<int>& arr, int left, int mid, int right)
 {
     int n1 = mid - left + 1;
@@ -38,7 +39,7 @@ void merge(vector<int>& arr, int left, int mid, int right)
         k++;
     }
 }
-
+// Función recursiva para ordenar
 void mergeSort(vector<int>& arr, int left, int right)
 {
     if (left >= right)
@@ -50,7 +51,7 @@ void mergeSort(vector<int>& arr, int left, int right)
     merge(arr, left, mid, right);
 }
 
-// Function to print a vector
+// Función para imprimir los elementos de un vector
 void printVector(vector<int>& arr, int n)
 {
     for (int i = 0; i < n; i++)
@@ -75,10 +76,13 @@ int main() {
         }
         archivo.close();
     }
+    // Medir el tiempo de ejecución del algoritmo de ordenamiento
     auto start = chrono::high_resolution_clock::now();
     mergeSort(arr, 0, n - 1);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> duration = end - start;
+
+    // Imprimir el vector ordenado y el tiempo de ejecucion
     cout << "Given vector is \n";
     printVector(arr,n);
     cout << duration.count() << endl;
