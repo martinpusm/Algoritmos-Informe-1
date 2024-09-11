@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+using namespace std;
+#include <chrono>
+
+void selectionSort(int arr[], int n)
+{
+    for (int i = 0; i < n - 1; i++)
+    {
+        int min_idx = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (arr[j] < arr[min_idx])
+                min_idx = j;
+        }
+        if (min_idx != i)
+            swap(arr[min_idx], arr[i]);
+    }
+}
+
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+// This is code is contributed by rathbhupendra
+
+int main() {
+    int nn = 5;
+    int n=1;
+    for (int i=0;i<nn;i++){
+        n=n*10;
+    }
+    int numeros[n];
+    std::ifstream archivo("semi_5.txt");
+    if (archivo.is_open()) {
+        for (int i = 0; i < n; ++i) {
+            if (!(archivo >> numeros[i])) {
+                std::cerr << "Error al leer el archivo en la línea " << i + 1 << std::endl;
+                return 1;
+            }
+        }
+        archivo.close();
+    }
+    auto start = chrono::high_resolution_clock::now();
+    selectionSort(numeros, n);
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> duration = end - start;
+    cout << "Sorted array: \n";
+    printArray(numeros, n);
+    cout << duration.count() << endl;
+
+    return 0;
+}
