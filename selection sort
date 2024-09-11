@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 #include <chrono>
-
+// This is code is contributed by rathbhupendra
+// Funcion para ordenar un arreglo usando Selection Sort
 void selectionSort(int arr[], int n)
 {
     for (int i = 0; i < n - 1; i++)
@@ -16,14 +17,13 @@ void selectionSort(int arr[], int n)
             swap(arr[min_idx], arr[i]);
     }
 }
-
+// Funcion para imprimir los elementos de un arreglo
 void printArray(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
 }
-// This is code is contributed by rathbhupendra
 
 int main() {
     int nn = 5;
@@ -42,10 +42,13 @@ int main() {
         }
         archivo.close();
     }
+    // Medir el tiempo de ejecucion del algoritmo de ordenamiento
     auto start = chrono::high_resolution_clock::now();
     selectionSort(numeros, n);
     auto end = chrono::high_resolution_clock::now();
     chrono::duration<double> duration = end - start;
+
+    // Imprimir el arreglo ordenado y el tiempo de ejecucion
     cout << "Sorted array: \n";
     printArray(numeros, n);
     cout << duration.count() << endl;
